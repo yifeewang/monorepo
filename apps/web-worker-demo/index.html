@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const worker = new Worker('./poorWorker.js');
+        worker.postMessage("我是主进程， 我是boss，我传给worker线程消息： 赶紧干活！！");
+        worker.onmessage = msg => {
+          console.log(msg)
+          console.log("我是主进程，我是boss，接收的子线程的数据：", msg.data);
+          worker.terminate(); // 关闭主线程
+        };
+        worker.onerror = e => {
+          console.log(e)
+        };
+    </script>  
+    <div>
+        
+    </div>      
+</body>
+</html>

@@ -10,6 +10,12 @@ importers:
       prettier: 2.6.0
       turbo: 1.1.10
 
+  apps/design-pattern:
+    specifiers:
+      vuex: '2'
+    devDependencies:
+      vuex: 2.5.0
+
   apps/express-app:
     specifiers:
       '@infras/native': workspace:*
@@ -22690,6 +22696,10 @@ packages:
       '@vue/runtime-dom': 3.2.31
       '@vue/server-renderer': 3.2.31_vue@3.2.31
       '@vue/shared': 3.2.31
+
+  /vuex/2.5.0:
+    resolution: {integrity: sha512-5oJPOJySBgSgSzoeO+gZB/BbN/XsapgIF6tz34UwJqnGZMQurzIO3B4KIBf862gfc9ya+oduY5sSkq+5/oOilQ==}
+    dev: true
 
   /w3c-hr-time/1.0.2:
     resolution: {integrity: sha512-z8P5DvDNjKDoFIHK7q8r8lackT6l+jo/Ye3HOle7l9nICP9lf1Ci25fy9vHd0JOWewkIFzXIEig3TdKT7JQ5fQ==}
