@@ -1,0 +1,40 @@
+import React, {useEffect} from 'react'
+import { HashRouter as Router, Route, Routes } from 'react-router-dom'
+import {useSelector, useDispatch} from 'react-redux';
+import { useNavigate, useParams } from "react-router-dom";
+// import { KeepaliveRouterSwitch ,KeepaliveRoute ,addKeeperListener } from 'react-keepalive-router'
+import App from '../pages/App'
+import Rule from '../pages/Rule'
+import {
+    // 类组件继承
+      PRoute
+    } from '@/components'
+
+// 由于useNavigate 等hooks不能再class组件中引入，所以只能通过props穿进去
+const WrapComps = (props)=> {
+    const dispatch = useDispatch()
+    let navigate = useNavigate();
+    let params = useParams();
+    let Element = props.el
+    return <Element dispatch={dispatch} params={params} navigate={navigate} useSelector={useSelector} {...props} />
+  }
+
+ const RouterMap =  (props) => {
+     console.log('routerMap',props)
+     useEffect(()=>{
+        console.log(1111)
+        setTimeout(()=>{
+            console.log(9999)
+        }, 2000)
+     }, [])
+    return (
+      <Router history={props.history}>
+          <Routes>
+            <Route exact path="/" element={<WrapComps el={App}/>} />
+            <Route exact path="/rules" element={<WrapComps el={Rule}/>} />
+          </Routes>
+      </Router>
+    )
+};
+
+export default RouterMap;
